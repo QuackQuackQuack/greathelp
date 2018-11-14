@@ -15,9 +15,6 @@
     "util",
     "greathelp"
   ],
-  "author": {
-    "name": "quackquackquack",
-    "url": "https://github.com/QuackQuackQuack"
-  },
+  "author": "quackquackquack",
   "license": "MIT"
 }
