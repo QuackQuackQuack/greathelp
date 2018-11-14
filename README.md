@@ -9,10 +9,20 @@
 $ npm install greathelp
 ```
 ### **Contents**
-* `String`
+* `array`
+  * [`chunkArray`](#chunkArray)
+* `string`
   * [`lPad`](#lPad)
 * `url`
   * [`getParameter`](#getParameter)
+
+
+## chunkArray
+```js
+const { chunkArray } = require('greathelp');
+console.log(chunkArray([1, 2, 3], 2));
+// [[1,2],[3]]
+```
 
 ### lPad
 
