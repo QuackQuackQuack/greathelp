@@ -9,7 +9,7 @@
  * @param {number} n chunk Size
  * @return {Array} new Array
  */
-module.exports = function chunkArray(arr, n) => {
+module.exports = function chunkArray(arr, n) {
 
   if (!arr || !n) { return arr; }
 
