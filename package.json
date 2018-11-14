@@ -1,0 +1,22 @@
+{
+  "name": "greathelp",
+  "version": "0.0.1",
+  "description": "javascirpt util",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/QuackQuackQuack/greathelp"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "util",
+  ],
+  "author": {
+    "name": "QuackQuackQuack",
+    "url": "https://github.com/QuackQuackQuack"
+  },
+  "license": "MIT"
+}
