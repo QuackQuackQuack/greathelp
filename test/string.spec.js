@@ -7,7 +7,3 @@ describe("String|lPad", () => {
     expect(lPad(1,3,'Z')).toEqual('ZZ1'); 
   });
 });
-
-
-
-
