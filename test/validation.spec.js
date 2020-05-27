@@ -1,4 +1,4 @@
-const isUrl = require('../src/validation/isUrl'); 
+const { isUrl, isSpace } = require('../src/validation'); 
 
 describe("Validation|isUrl", () => {
   // url형식인지, 아닌지 여부를 반환한다.
@@ -14,5 +14,15 @@ describe("Validation|isUrl", () => {
     expect(isUrl(url3)).toEqual(true); 
     expect(isUrl(url4)).toEqual(true); 
     expect(isUrl(url5)).toEqual(true); 
+  });
+});
+
+describe("Validation|isSpace", () => {
+  // 문자 사이에 공백이 있는 지 여부 반환 
+  test('Whether there is a space between characters', () => {
+    expect(isSpace('te st')).toEqual(true); 
+    expect(isSpace('   ')).toEqual(true); 
+    expect(isSpace('test')).toEqual(false); 
+    expect(isSpace('')).toEqual(false); 
   });
 });

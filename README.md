@@ -19,13 +19,56 @@ $ npm install greathelp
     * [`isUrl`](#isUrl)
 
 
-## chunkArray
+## Array
+### chunkArray
 ```js
 const { chunkArray } = require('greathelp');
 console.log(chunkArray([1, 2, 3], 2));
 // [[1,2],[3]]
 ```
 
+## Object
+### matchKey
+```js
+const { matchKey } = require('greathelp');
+console.log(matchKey({a: 1, b: 2}, 'a'));
+console.log(matchKey({a: 1, b: 2, c: 3}, ['a', 'c']));
+// {a: 1}
+// {a: 1, c: 3}
+```
+
+### matchKey
+```js
+const { searchKeyGetValue } = require('greathelp');
+const obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: { test: 'test', apple: 'apple', dog: 'dog', },
+  f: [
+    {
+      a: 'a', b: 'b',
+    },
+    {
+      c: 'c', d: 'd',
+    }
+  ]
+}
+console.log(searchKeyGetValue(obj,'a'));
+console.log(searchKeyGetValue(obj,'d.apple'));
+console.log(searchKeyGetValue(obj,'f.1.c'));
+console.log(searchKeyGetValue(obj,'e'));
+console.log(searchKeyGetValue(null,'a'));
+console.log(searchKeyGetValue({},'a'));
+// 1
+// 'apple'
+// 'c',
+// undefined
+// null
+// {}
+```
+
+## String
 ### lPad
 
 ```js
@@ -34,6 +77,7 @@ console.log(lPad(10, 4, 0));
 // 0010
 ```
 
+## Url
 ### getParameter
 
 ```js
@@ -46,6 +90,7 @@ console.log('url2', getParameter(url2));
 // url2 {}
 ```
 
+## Validation
 ### isUrl
 with hangul domain
 

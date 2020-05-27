@@ -11,7 +11,7 @@
  *  test2: 23,
  * }
  * @param  {string} url url
- * @return {object} object
+ * @returns {object} object
  */
 module.exports = function getParameter(url) {
   let hash;
