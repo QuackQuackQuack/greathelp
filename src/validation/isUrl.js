@@ -7,5 +7,5 @@
  */
 module.exports = function isUrl(url) {
   const pattern = /^(?:http(s)?:\/\/)?[\wㄱ-힣.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]ㄱ-힣@!\$&%'\(\)\*\+,;=.|{}"<>^]+$/;
-  return pattern.test(value);
+  return pattern.test(url);
 };
