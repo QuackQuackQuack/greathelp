@@ -9,15 +9,18 @@
 $ npm install greathelp
 ```
 ### **Contents**
-* `array`
+* `Array`
   * [`chunkArray`](#chunkArray)
-* `string`
+* `Object`
+  * [`matchKey`](#matchKey)
+  * [`searchKeyGetValue`](#searchKeyGetValue)
+* `String`
   * [`lPad`](#lPad)
-* `url`
+* `Url`
   * [`getParameter`](#getParameter)
-* `validation`
+* `Validation`
     * [`isUrl`](#isUrl)
-
+    * [`isSpace`](#isSpace)
 
 ## Array
 ### chunkArray
