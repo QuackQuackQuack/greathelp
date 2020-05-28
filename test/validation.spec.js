@@ -1,4 +1,31 @@
-const { isUrl, isSpace } = require('../src/validation'); 
+const { findType, isUrl, isSpace } = require('../src/validation'); 
+
+describe("Validation|findType", () => {
+  // 타입을 스트링으로 반환.
+  test('find out the type of variable', () => {
+
+    const num = 123;
+    const str = 'test';
+    const boolean = true;
+    const arr = [];
+    const obj = {};
+    const func = () => {};
+    const symbol = Symbol.for('key');
+    const date = new Date();
+    const nul = null;
+
+    expect(findType(num)).toEqual('Number');
+    expect(findType(str)).toEqual('String');
+    expect(findType(boolean)).toEqual('Boolean');
+    expect(findType(arr)).toEqual('Array');
+    expect(findType(obj)).toEqual('Object');
+    expect(findType(func)).toEqual('Function');
+    expect(findType(symbol)).toEqual('Symbol');
+    expect(findType(date)).toEqual('Date');
+    expect(findType(nul)).toEqual('Null');
+    expect(findType()).toEqual('Undefined');
+  });
+});
 
 describe("Validation|isUrl", () => {
   // url형식인지, 아닌지 여부를 반환한다.

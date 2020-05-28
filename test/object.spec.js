@@ -1,4 +1,4 @@
-const { matchKey, searchKeyGetValue } = require('../src/object'); 
+const { matchKey, searchKeyGetValue, getFinalDataKey } = require('../src/object'); 
 
 describe("Object|matchKey", () => {
   // Object에서 매칭되는 값만 오브젝트로 반환한다. 1depth only
@@ -18,7 +18,6 @@ describe("Object|matchKey", () => {
     expect(matchKey(obj,['a', 'b', 'd'])).toEqual({ a: 1, b: 2, d: { test: 'test'} });
   });
 });
-
 
 describe("Object|searchKeyGetValue", () => {
   // Object에서 String 매칭되는 값만 반환 한다 (a.b.c 형태) 
@@ -42,7 +41,7 @@ describe("Object|searchKeyGetValue", () => {
           d: 'd',
         }
      ]
-    }
+    };
     expect(searchKeyGetValue(obj,'a')).toEqual(1);
     expect(searchKeyGetValue(obj,'d.apple')).toEqual('apple');
     expect(searchKeyGetValue(obj,'f.1.c')).toEqual('c');
@@ -51,3 +50,24 @@ describe("Object|searchKeyGetValue", () => {
     expect(searchKeyGetValue({},'a')).toEqual({});
   });
 });
+
+describe("Object|getFinalDataKey", () => {
+  // filter값에 따라 데이터를 오브젝트로 감싼다. 
+  test('Wrap data around objects according to filter values', () => {
+    const obj = { test:1 };
+    const arr = [{ a: 1, b: 2}];
+    const arr2 = [];
+
+    //data object
+    expect(getFinalDataKey(obj,'a')).toEqual({ a: { test: 1}});
+    // data arr
+    expect(getFinalDataKey(arr,'arr.obj.test')).toEqual({ arr: { obj: { test: [ { a: 1, b: 2 }]}} });
+    // filter none    
+    expect(getFinalDataKey(arr, '')).toEqual([{ a:1, b: 2 }]);
+    // data none    
+    expect(getFinalDataKey([], 'test.arr2')).toEqual({ test: { arr2: [] } });
+    expect(getFinalDataKey({}, 'test.arr2')).toEqual({ test: { arr2: {} } });
+    expect(getFinalDataKey(null, 'test.arr2')).toEqual({ test: { arr2: null } });
+  });
+});
+

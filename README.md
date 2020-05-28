@@ -14,11 +14,13 @@ $ npm install greathelp
 * `Object`
   * [`matchKey`](#matchKey)
   * [`searchKeyGetValue`](#searchKeyGetValue)
+  * [`getFinalDataKey`](#getFinalDataKey)
 * `String`
   * [`lPad`](#lPad)
 * `Url`
   * [`getParameter`](#getParameter)
 * `Validation`
+    * [`findType`](#findType)
     * [`isUrl`](#isUrl)
     * [`isSpace`](#isSpace)
 
@@ -70,6 +72,35 @@ console.log(searchKeyGetValue({},'a'));
 // {}
 ```
 
+### getFinalDataKey
+```js
+const { getFinalDataKey } = require('greathelp');
+const obj = { test:1 };
+const arr = [{ a: 1, b: 2}];
+const arr2 = [];
+
+//data object
+console.log(getFinalDataKey(obj,'a'));
+// => { a: { test: 1}}
+
+// data arr
+console.log(ggetFinalDataKey(arr,'arr.obj.test'));
+// => ({ arr: { obj: { test: [ { a: 1, b: 2 }]}} })
+
+// filter none    
+console.log(ggetFinalDataKey(arr, '')).toEqual();
+// => [{ a:1, b: 2 }]
+
+// data none    
+console.log(ggetFinalDataKey([], 'test.arr2'));
+console.log(ggetFinalDataKey({}, 'test.arr2'));
+console.log(ggetFinalDataKey(null, 'test.arr2'));
+// => { test: { arr2: [] } }
+// => { test: { arr2: {} } }
+// => { test: { arr2: null } }
+
+```
+
 ## String
 ### lPad
 
@@ -93,6 +124,31 @@ console.log('url2', getParameter(url2));
 ```
 
 ## Validation
+### findType
+
+```js
+const num = 123;
+const str = 'test';
+const boolean = true;
+const arr = [];
+const obj = {};
+const func = () => {};
+const symbol = Symbol.for('key');
+const date = new Date();
+const nul = null;
+
+console.log(findType(num)); //'Number'
+console.log(findType(str)); //'String'
+console.log(findType(boolean)); //'Boolean'
+console.log(findType(arr)); //'Array'
+console.log(findType(obj)); //'Object'
+console.log(findType(func)); //'Function'
+console.log(findType(symbol)); //'Symbol'
+console.log(findType(date)); //'Date'
+console.log(findType(nul)); //'Null'
+console.log(findType()); //'Undefined'
+```
+
 ### isUrl
 with hangul domain
 
