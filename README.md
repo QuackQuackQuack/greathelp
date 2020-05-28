@@ -127,6 +127,7 @@ console.log('url2', getParameter(url2));
 ### findType
 
 ```js
+const { findType } = require('greathelp');
 const num = 123;
 const str = 'test';
 const boolean = true;
