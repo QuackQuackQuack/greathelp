@@ -20,9 +20,9 @@ describe("Validation|isUrl", () => {
 describe("Validation|isSpace", () => {
   // 문자 사이에 공백이 있는 지 여부 반환 
   test('Whether there is a space between characters', () => {
-    expect(isSpace('te st')).toEqual(true);
     expect(isSpace('test ')).toEqual(true); 
     expect(isSpace(' test')).toEqual(true); 
+    expect(isSpace('te st')).toEqual(true); 
     expect(isSpace('   ')).toEqual(true); 
     expect(isSpace('test')).toEqual(false); 
     expect(isSpace('')).toEqual(false); 
