@@ -78,17 +78,17 @@ console.log(getFinalDataKey(obj,'a'));
 // => { a: { test: 1}}
 
 // data arr
-console.log(ggetFinalDataKey(arr,'arr.obj.test'));
+console.log(getFinalDataKey(arr,'arr.obj.test'));
 // => ({ arr: { obj: { test: [ { a: 1, b: 2 }]}} })
 
 // filter none    
-console.log(ggetFinalDataKey(arr, '')).toEqual();
+console.log(getFinalDataKey(arr, ''));
 // => [{ a:1, b: 2 }]
 
 // data none    
-console.log(ggetFinalDataKey([], 'test.arr2'));
-console.log(ggetFinalDataKey({}, 'test.arr2'));
-console.log(ggetFinalDataKey(null, 'test.arr2'));
+console.log(getFinalDataKey([], 'test.arr2'));
+console.log(getFinalDataKey({}, 'test.arr2'));
+console.log(getFinalDataKey(null, 'test.arr2'));
 // => { test: { arr2: [] } }
 // => { test: { arr2: {} } }
 // => { test: { arr2: null } }
