@@ -1,6 +1,6 @@
 'use strict';
 
-const { matchKey, searchKeyGetValue, getFinalDataKey } = require('./src/object');
+const { matchKey, searchKeyGetValue, searchKeyDelete, getFinalDataKey } = require('./src/object');
 const { findType, isUrl, isSpace } = require('./src/validation');
 const { sumAll } = require('./src/math');
 const chunkArray = require('./src/array/chunkArray');
@@ -10,6 +10,7 @@ const getParameter = require('./src/url/getParameter');
 module.exports = {
   matchKey,
   searchKeyGetValue,
+  searchKeyDelete,
   getFinalDataKey,
   sumAll,
   findType,

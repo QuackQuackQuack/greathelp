@@ -66,6 +66,18 @@ console.log(searchKeyGetValue(null,'a')); // null
 console.log(searchKeyGetValue({},'a')); // {}
 ```
 
+### searchKeyDelete
+```js
+const { searchKeyDelete } = require('greathelp');
+const obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: { test: 'test', apple: 'apple', dog: 'dog', },
+}
+console.log(searchKeyDelete(obj,'a')); // {  b: 2, c: 3,  d: { test: 'test', apple: 'apple', dog: 'dog' } }
+console.log(searchKeyDelete(obj,'d.test')); // {  a: 1, b: 2, c: 3,  d: { apple: 'apple', dog: 'dog' } }
+```
 ### getFinalDataKey
 ```js
 const { getFinalDataKey } = require('greathelp');
@@ -195,7 +207,7 @@ console.log('string3', isSpace(string3)); // string3, true
 + [github/QuackQuackQuack](https://github.com/QuackQuackQuack)
 
 ## License
-Copyright (c) 2018 QuackQuackQuack
+Copyright (c) 2018 ~ 2020 QuackQuackQuack
 Released under the MIT license
 
 ***

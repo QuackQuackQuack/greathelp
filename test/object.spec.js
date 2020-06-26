@@ -1,4 +1,4 @@
-const { matchKey, searchKeyGetValue, getFinalDataKey } = require('../src/object'); 
+const { matchKey, searchKeyGetValue, searchKeyDelete, getFinalDataKey } = require('../src/object'); 
 
 describe("Object|matchKey", () => {
   // Object에서 매칭되는 값만 오브젝트로 반환한다. 1depth only
@@ -48,6 +48,47 @@ describe("Object|searchKeyGetValue", () => {
     expect(searchKeyGetValue(obj,'e')).toEqual(undefined);
     expect(searchKeyGetValue(null,'a')).toEqual(null);
     expect(searchKeyGetValue({},'a')).toEqual({});
+  });
+});
+
+
+describe("Object|searchKeyDelete", () => {
+  // Object에서 String 매칭되는 값을 찾아 삭제 한다. (a.b.c 형태) 
+  test('Locate and delete the corresponding key.', () => {
+    const obj = {
+      a: 'a',
+      b: 'b',
+      c: { a: 'a', b: 'b' },
+      d: { a: { a: 'a' }, b: 'b' },
+    }
+
+    const result1 = {
+      b: 'b',
+      c: { a: 'a', b: 'b' },
+      d: { a: { a: 'a' }, b: 'b' },
+    }
+
+    const result2 = {
+      a: 'a',
+      b: 'b',
+      c: { b: 'b' },
+      d: { a: { a: 'a' }, b: 'b' },
+    }
+
+    const result3 = {
+      a: 'a',
+      b: 'b',
+      c: { a: 'a', b: 'b' },
+      d: { a: {}, b: 'b' },
+    }
+
+    expect(searchKeyDelete(obj,'a')).toEqual(result1);
+    expect(searchKeyDelete(obj,'c.a')).toEqual(result2);
+    expect(searchKeyDelete(obj,'d.a.a')).toEqual(result3);
+    expect(searchKeyDelete(obj)).toEqual(obj);
+    expect(searchKeyDelete({})).toEqual({});
+    expect(searchKeyDelete(123, 12)).toEqual({});
+    expect(obj).toEqual(obj);
   });
 });
 
